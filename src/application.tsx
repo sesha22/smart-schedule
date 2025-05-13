@@ -1,3 +1,5 @@
+import { Button } from "./button";
+
 const tasks = [
   {
     id: 1,
@@ -17,6 +19,10 @@ export function App() {
   return (
     <div>
       <h1>Smart Schedule</h1>
+
+      <Button>
+        <span>Click Me</span>
+      </Button>
 
       <ul>
         {tasks.map((task) => {
