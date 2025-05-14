@@ -1,4 +1,4 @@
-import { Button } from "./button";
+import { Button } from "./components/button";
 
 const tasks = [
   {
@@ -20,10 +20,6 @@ export function App() {
     <div>
       <h1>Smart Schedule</h1>
 
-      <Button>
-        <span>Click Me</span>
-      </Button>
-
       <ul>
         {tasks.map((task) => {
           return (
@@ -31,6 +27,7 @@ export function App() {
               <h2>{task.title}</h2>
               <p>{task.completed ? "Completed" : "Not Completed"}</p>
               <p>{task.date.toLocaleString()}</p>
+              <Button>Delete</Button>
             </li>
           );
         })}
