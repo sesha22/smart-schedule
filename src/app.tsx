@@ -17,16 +17,25 @@ const tasks = [
 
 export function App() {
   return (
-    <div>
-      <h1>Smart Schedule</h1>
+    <div className="p-4">
+      <h1 className="p-10 text-5xl ">Smart Schedule</h1>
 
-      <ul>
+      <ul className="space-y-4">
         {tasks.map((task) => {
           return (
             <li key={task.id}>
-              <h2>{task.title}</h2>
-              <p>{task.completed ? "Completed" : "Not Completed"}</p>
-              <p>{task.date.toLocaleString()}</p>
+              <h2 className="text-2xl font-bold">{task.title}</h2>
+              <p className="font-bold">
+                {task.completed ? (
+                  <span className="text-emerald-500"> Completed </span>
+                ) : (
+                  <span className="text-pink-500"> Not Completed </span>
+                )}
+              </p>
+              <p>
+                <span className="font-bold">Date Time </span>
+                <span>{task.date.toLocaleString()}</span>
+              </p>
               <Button>Delete</Button>
             </li>
           );
