@@ -29,6 +29,10 @@ const tasks = [
 ];
 
 export function App() {
+  function removeTask() {
+    console.log("Task removed");
+  }
+
   return (
     <div className="p-4 bg-blue-300 flex justify-center">
       <section className="w-full max-w-lg:">
@@ -53,7 +57,7 @@ export function App() {
                   <span className="font-bold">Date Time </span>
                   <span>{task.date.toLocaleString()}</span>
                 </p>
-                <Button>Delete</Button>
+                <Button onClick={removeTask}>Delete</Button>
               </li>
             );
           })}
