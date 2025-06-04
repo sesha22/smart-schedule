@@ -38,8 +38,8 @@ export function App() {
   }
 
   return (
-    <div className="p-4 bg-blue-300 flex justify-center">
-      <section className="w-full max-w-lg:">
+    <div className="p-4 flex justify-center">
+      <section className="w-full max-w-lg">
         <h1 className="p-10 text-5xl ">Smart Schedule</h1>
         <ButtonCounter />
         <ul className="space-y-4 max-w-lg">
