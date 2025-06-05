@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Button } from "./components/button";
 import { ButtonCounter } from "./components/button-counter";
 
-const tasks = [
+const initialTasks = [
   {
     id: 1,
     title: "Wake Up and Subuh Prayer",
@@ -29,13 +30,16 @@ const tasks = [
 ];
 
 export function App() {
-  function removeTask() {
-    console.log("Task removed");
+  const [tasks, setTask] = useState(initialTasks);
+
+  function removeTask(id: number) {
+    const updatedTask = tasks.filter((task) => task.id !== id);
+    setTask(updatedTask);
   }
 
   return (
     <div className="p-4 bg-blue-300 flex justify-center">
-      <section className="w-full max-w-lg:">
+      <section className="w-full max-w-lg">
         <h1 className="p-10 text-5xl ">Smart Schedule</h1>
         <ButtonCounter />
         <ul className="space-y-4 max-w-lg">
@@ -57,7 +61,7 @@ export function App() {
                   <span className="font-bold">Date Time </span>
                   <span>{task.date.toLocaleString()}</span>
                 </p>
-                <Button onClick={removeTask}>Delete</Button>
+                <Button onClick={() => removeTask(task.id)}>Delete</Button>
               </li>
             );
           })}
