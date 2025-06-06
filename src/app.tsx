@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "./components/button";
-import { ButtonCounter } from "./components/button-counter";
+import type { Task } from "./modules/type";
+import { TaskCard } from "./components/task-card";
 
-const initialTasks = [
+const initialTasks: Task[] = [
   {
     id: 1,
     title: "Wake Up and Subuh Prayer",
@@ -31,6 +32,16 @@ const initialTasks = [
 
 export function App() {
   const [tasks, setTask] = useState(initialTasks);
+  function addTask() {
+    const newTask = {
+      id: tasks[tasks.length - 1].id + 1,
+      title: "Example Task",
+      completed: false,
+      date: new Date(),
+    };
+    const updatedTasks = [...tasks, newTask];
+    setTask(updatedTasks);
+  }
 
   function removeTask(id: number) {
     const updatedTask = tasks.filter((task) => task.id !== id);
@@ -41,7 +52,9 @@ export function App() {
     <div className="p-4 bg-blue-300 flex justify-center">
       <section className="w-full max-w-lg">
         <h1 className="p-10 text-5xl ">Smart Schedule</h1>
-        <ButtonCounter />
+
+        <Button onClick={addTask}>Add New Task </Button>
+
         <ul className="space-y-4 max-w-lg">
           {tasks.map((task) => {
             return (
@@ -49,19 +62,7 @@ export function App() {
                 key={task.id}
                 className=" bg-amber-50 flex-col items-start justify-between p-4 rounded-lg shadow-md"
               >
-                <h2 className="text-2xl font-bold">{task.title}</h2>
-                <p className="font-bold">
-                  {task.completed ? (
-                    <span className="text-emerald-900"> Completed </span>
-                  ) : (
-                    <span className="text-pink-500"> Not Completed </span>
-                  )}
-                </p>
-                <p>
-                  <span className="font-bold">Date Time </span>
-                  <span>{task.date.toLocaleString()}</span>
-                </p>
-                <Button onClick={() => removeTask(task.id)}>Delete</Button>
+                <TaskCard task={task} removeTask={removeTask} />
               </li>
             );
           })}
