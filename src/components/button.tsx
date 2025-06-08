@@ -1,4 +1,4 @@
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
+export type ButtonProps = React.ComponentPropsWithoutRef<"button">;
 
 export function Button(props: ButtonProps) {
   return (
