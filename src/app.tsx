@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "./components/button";
 import type { Task } from "./modules/type";
 import { TaskCard } from "./components/task-card";
+import { Button } from "./components/button";
 
 const initialTasks: Task[] = [
   {
@@ -32,15 +32,26 @@ const initialTasks: Task[] = [
 
 export function App() {
   const [tasks, setTask] = useState(initialTasks);
-  function addTask() {
+
+  function addTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const title = String(formData.get("title"));
+
     const newTask = {
       id: tasks[tasks.length - 1].id + 1,
-      title: "Example Task",
+      title: title,
       completed: false,
       date: new Date(),
     };
+
     const updatedTasks = [...tasks, newTask];
+
     setTask(updatedTasks);
+
+    event.currentTarget.reset();
   }
 
   function removeTask(id: number) {
@@ -52,6 +63,21 @@ export function App() {
     <div className="p-4 bg-blue-300 flex justify-center">
       <section className="w-full max-w-lg">
         <h1 className="p-10 text-5xl ">Smart Schedule</h1>
+
+        <form onSubmit={addTask} method="post">
+          <label htmlFor="title">Task title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Task Title"
+            className="p-2 border"
+          />
+          <input type="date" name="title" />
+          <button type="submit" className="p-2 bg-blue-300">
+            Add Task
+          </button>
+        </form>
 
         <Button onClick={addTask}>Add New Task </Button>
 
