@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { Task } from "../modules/type";
 import { Button } from "./button";
 
@@ -13,7 +14,10 @@ export function TaskCard({
       key={task.id}
       className=" bg-amber-50 flex-col items-start justify-between p-4 rounded-lg shadow-md"
     >
-      <h2 className="text-2xl font-bold">{task.title}</h2>
+      <Link to={`/tasks/${task.id}`}>
+        <h2 className="text-2xl font-bold">{task.title}</h2>
+      </Link>
+
       <p className="font-bold">
         {task.completed ? (
           <span className="text-emerald-900"> Completed </span>

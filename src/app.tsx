@@ -61,7 +61,7 @@ export function App() {
 
   return (
     <div className="p-4 bg-blue-300 flex justify-center">
-      <section className="w-full max-w-lg">
+      <section className="w-full max-w-lg space-y-10">
         <h1 className="p-10 text-5xl ">Smart Schedule</h1>
 
         <form onSubmit={addTask} method="post">
@@ -73,13 +73,8 @@ export function App() {
             placeholder="Task Title"
             className="p-2 border"
           />
-          <input type="date" name="title" />
-          <button type="submit" className="p-2 bg-blue-300">
-            Add Task
-          </button>
+          <Button type="submit">Add Task</Button>
         </form>
-
-        <Button onClick={addTask}>Add New Task </Button>
 
         <ul className="space-y-4 max-w-lg">
           {tasks.map((task) => {
