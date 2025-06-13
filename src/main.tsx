@@ -1,17 +1,32 @@
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 
 import "./index.css";
-import { App } from "./app";
 import { AboutRoute } from "./routes/about";
 import { TaskDetailsRoute } from "./routes/task-details";
+import { HomeRoute } from "./routes/home";
+import { CounterRoute } from "./routes/counter";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
+    <nav className="bg-fuchsia-300 p-4 text-sm">
+      <ul className="flex gap-4 text-black font-bold  ">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/counter">Counter</Link>
+        </li>
+      </ul>
+    </nav>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<HomeRoute />} />
       <Route path="/about" element={<AboutRoute />} />
       <Route path="/tasks/:taskId" element={<TaskDetailsRoute />} />
+      <Route path="/counter" element={<CounterRoute />} />
     </Routes>
   </BrowserRouter>
 );
