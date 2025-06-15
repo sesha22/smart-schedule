@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { Task } from "../modules/type";
+import type { Task } from "../modules/task/type";
 import { Button } from "./button";
 
 export function TaskCard({
