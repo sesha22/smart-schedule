@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Button } from "../components/button";
 
 export function CounterRoute() {
   const [count, setCount] = useState(0);

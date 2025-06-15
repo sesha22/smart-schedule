@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import type { Task } from "../modules/task/type";
-import { Button } from "./button";
+import type { Task } from "@/modules/task/type";
+import { Button } from "@/components/ui/button";
 
 export function TaskCard({
   task,
@@ -29,7 +29,9 @@ export function TaskCard({
         <span className="font-bold">Date Time </span>
         <span>{task.date.toLocaleString()}</span>
       </p>
-      <Button onClick={() => removeTask(task.id)}>Delete</Button>
+      <Button variant={"destructive"} onClick={() => removeTask(task.id)}>
+        Delete
+      </Button>
     </div>
   );
 }

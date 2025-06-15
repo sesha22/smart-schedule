@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Task } from "../modules/task/type";
 import { TaskCard } from "../components/task-card";
-import { Button } from "../components/button";
+import { Button } from "@/components/ui/button";
 
 const initialTasks: Task[] = [
   {
